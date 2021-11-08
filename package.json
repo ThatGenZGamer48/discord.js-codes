@@ -1,0 +1,27 @@
+{
+    "name": "discordjs-codes",
+    "version": "1.0.0",
+    "description": "All the discord.js command codes.",
+    "main": "command-handler-template.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ThatGenZGamer48/discord.js-codes.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ThatGenZGamer48/discord.js-codes/issues"
+    },
+    "homepage": "https://github.com/ThatGenZGamer48/discord.js-codes#readme",
+    "dependencies": {
+        "@discordjs/builders": "^0.8.2",
+        "@discordjs/rest": "0.1.0-canary.0",
+        "discord-api-types": "^0.24.0",
+        "discord.js": "^13.3.1",
+        "prettier": "^2.4.1"
+    }
+}
