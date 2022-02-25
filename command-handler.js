@@ -9,28 +9,25 @@ const fs = require('fs');
 
 // Registering the client
 client = new Client({
-    intents: [discord.Intents.FLAGS.GUILDS, discord.Intents.FLAGS.GUILD_MESSAGES],
+    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
     allowedMentions: { parse: ['users', 'roles'], repliedUser: true },
 });
 
 // Command Handler
 client.commands = new Collection();
 
-const commandFiles = fs.readdirSync('./commands').filter((file) => file.endsWith('.js'));
+const commandArray = [];
 
-for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
-    client.commands.set(command.data.name, command);
-}
-
-// Slash Command Builder (Handler)
-const commands = [];
-
-for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
-    commands.push(command.data.toJSON());
-    console.log('[SLASH CMD] Loaded ' + String(file) + ' slash command successfully!');
-}
+const commandFiles = fs.readdirSync('./commands')
+    .filter((file) => file.endsWith('.js'))
+    .forEach((file) => {
+        const command = require(`./commands/${file}`);
+        client.commands.set(command.data.name, command);
+        
+        const command = require(`./commands/${file}`);
+        commandArray.push(command.data.toJSON());
+        console.log('[SLASH CMD] Loaded ' + String(file) + ' slash command successfully!');       
+    });
 
 // Registering Slash Commands from file
 const rest = new REST({ version: '9' }).setToken(token);
